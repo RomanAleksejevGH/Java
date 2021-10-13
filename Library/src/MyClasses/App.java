@@ -96,6 +96,7 @@ public class App {
                             System.out.println("Книга "+histories[i].getBook().getBookName()
                                                 +" выдана читателю "+histories[i].getReader().getName()
                                                 +" "+ histories[i].getReader().getFamilyname());
+                            break;
                         }
                     }
                     System.out.println("-------------------");
@@ -104,8 +105,34 @@ public class App {
                     
                 case 6:
                     System.out.println("--- Вернуть книгу ---");   
-                
+                    System.out.println("Список читаемых книг:");
+                    int n = 0;
+                    for (int i = 0; i < histories.length; i++) {
+                        if(histories[i] != null && histories[i].getReturnedDate() == null){
+                            System.out.println(i+1+". Книгу "
+                                    +histories[i].getBook().getBookName()
+                                    +" читает "+histories[i].getReader().getName()
+                                    +" "+histories[i].getReader().getFamilyname()
+                            );
+                            n++;
+                        }
+                    }
+                    if(n < 1){
+                        System.out.println("Нет читаемых книг!");
+                        System.out.println("-------------------");
+                        break;
+                    }
+                    System.out.print("Выберите номер возврщаемой книги: ");
+                    int numberHistory = scanner.nextInt(); scanner.nextLine();
+                    Calendar c = new GregorianCalendar();
+                    histories[numberHistory - 1].setReturnedDate(c.getTime());
+                    System.out.println("Книга "
+                            +histories[numberHistory - 1].getBook().getBookName()
+                            +" возвращена в библиотеку"
+                    );
+                    System.out.println("-------------------");
                     break;
+                    
                     
                     
                 default:
