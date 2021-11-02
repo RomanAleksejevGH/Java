@@ -5,42 +5,48 @@
  */
 package Entity;
 
-/**
- *
- * @author user
- */
-public class Customer {
-    private int customerID;
-    private String customerName;
-    private String custumerPhone;
+import java.io.Serializable;
 
+
+public class Customer implements Serializable{
+    private String name;
+    private String lastname;
+    private double money;
+
+    
+    
+    
     public Customer() {
     }
 
-    public int getCustomerID() {
-        return customerID;
-    }
-
-    public void setCustomerID(int customerID) {
-        this.customerID = customerID;
-    }
-
-    public String getCustomerName() {
-        return customerName;
-    }
-
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
-    }
-
-    public String getCustumerPhone() {
-        return custumerPhone;
-    }
-
-    public void setCustumerPhone(String custumerPhone) {
-        this.custumerPhone = custumerPhone;
-    }
     
     
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
     
+    public double getMoney() {
+        return money;
+    }
+
+    public void setMoney(double money) {
+        this.money = money;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" + "name=" + name + ", lastname=" + lastname + ", money= "+ money+ '}';
+    }
 }
