@@ -26,7 +26,7 @@ public class Item implements Serializable{
         return itemName;
     }
 
-    public void setBookName(String itemName) {
+    public void setItemName(String itemName) {
         this.itemName = itemName;
     }
     
@@ -48,6 +48,6 @@ public class Item implements Serializable{
 
     @Override
     public String toString() {
-        return "Item{" + "itemName=" + itemName + ", itemPrice=" + itemPrice+ ", itemsInStock=" + itemsInStock + '}';
+        return "Item{" + "itemName=" + itemName + ", itemPrice=$ " + itemPrice+ ", itemsInStock=" + itemsInStock + '}';
     }
 }

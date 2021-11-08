@@ -23,11 +23,11 @@ public class Warehouse implements Serializable{
     public Warehouse() {
     }
 
-    public Customer getReader() {
+    public Customer getCustomer() {
         return customer;
     }
 
-    public void setReader(Customer customer) {
+    public void setCustomer(Customer customer) {
         this.customer = customer;
     }
 
