@@ -92,12 +92,12 @@ public class App {
                     
                 case 8:
                     System.out.println("Доход магазина за все время работы: ");
-                    //printTotalSold();
+                    printTotalSold();
                     break;
                     
                 case 9:
                     System.out.println("Добавить денег покупателю: ");
-                    //addMoney();
+                    addMoney();
                     break;
 
                 
@@ -212,6 +212,32 @@ public class App {
        
        System.out.println("--------------------");
     }
+
+
+    private void addMoney() {
+        System.out.println("---- Добавить деньги покупателю ----");
+        Set<Integer> setNumbersCustomers = printListCustomers();
+        if(setNumbersCustomers.isEmpty()){
+            System.out.println("Нет такого покупателя");
+           return;
+        }
+        System.out.println("Выберите покупателя: ");
+        int numberCustomer= insertInt(setNumbersCustomers);
+        
+        
+        System.out.println("Введите сумму: ");
+        double numberOfMoney= getDouble();
+        
+        Warehouse warehouse = new Warehouse();
+        warehouse.setCustomer(customers.get(numberCustomer - 1));
+        
+        warehouse.getCustomer().setMoney(warehouse.getCustomer().getMoney() + numberOfMoney);
+        saverToFiles.saveCustomers(customers);
+        
+        
+        
+        System.out.println("--------------------");
+     }
     
     
     private Set<Integer> printListCustomers() {
@@ -250,6 +276,11 @@ public class App {
     }
     
     
+    private void printTotalSold() {
+        System.out.println("----- Всего продано на сумму " +warehouseHistory.get(1).getSoldTotal()+"$ -----");
+        
+    }
+
     private void sellItem() {
        System.out.println("---- Продажа продуктов ----");
        Set<Integer> setNumbersItems = printListItems();
@@ -282,6 +313,7 @@ public class App {
        saverToFiles.saveItems(items);
        warehouse.getCustomer().setMoney(warehouse.getCustomer().getMoney() - priceTotal);
        saverToFiles.saveCustomers(customers);
+       warehouse.setSoldTotal(warehouse.getSoldTotal()+ priceTotal);
        saverToFiles.saveWarehouseHistory(warehouseHistory);
        System.out.println("--------------------");
     }
